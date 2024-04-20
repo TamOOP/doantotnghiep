@@ -1,0 +1,82 @@
+#name {
+    max-width: 60% !important;
+}
+
+.require-icon {
+    color: red;
+    margin-left: auto;
+    margin-right: 2rem;
+}
+
+.group-input {
+    display: flex;
+    margin-top: 15px;
+
+}
+
+.input-label {
+    display: flex;
+    flex-basis: 25%;
+    padding-left: 20px;
+    padding-right: 10px;
+}
+
+.course-input{
+    max-width: fit-content ;
+}
+.course-input, .datepicker-container {
+    flex-basis: 75%;
+}
+
+.collapse-item {
+    padding: 20px 0;
+    border-bottom: 1px solid #dddfe0;
+}
+
+
+.datepicker-container{
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+    background: transparent;
+    bottom: 0;
+    cursor: pointer;
+    height: auto;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+}
+
+.datepicker{
+    position: relative;
+    max-width: 50%;
+    margin-right: 10px;
+}
+.hour-select, .minute-select, .datepicker{
+    width: fit-content !important;
+}
+.datepicker-icon{
+    color: #0f6cbf;
+    font-size: 18px;
+}
+
+.select-icon{
+    position: absolute;
+    right: calc(60% + 10px);
+    top: 10px;
+}
+#course-fee{
+    max-width: 10%;
+}
+#btn-cancel{
+    background-color: #ccc !important;
+    color: black !important;
+    border-color: #ccc !important;
+}
+#btn-cancel:hover{
+    opacity: 0.8;
+}

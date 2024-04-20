@@ -1,0 +1,61 @@
+.sidebar {
+    background-color: #343a40;
+}
+
+a:hover {
+    text-decoration: none !important;
+}
+.sidebar-container{
+    border-top: 1px solid #56606a;
+    padding: 5px;
+}
+#btn-close-sidebar {
+    color: white;
+}
+
+ul span, ul i {
+    color: #c2c7d0;
+}
+
+.sidebar-activity{
+    font-weight: 450;
+}
+
+.sidebar-item {
+    opacity: 1;
+}
+
+.sidebar-item.active i, .sidebar-item.active span {
+    color: white !important;
+}
+
+.sidebar-activity {
+    padding:10px;
+    cursor: pointer;
+    margin-top: 5px;
+    border-radius: 7px;
+}
+
+.sidebar-item.active, .sidebar-item.active:hover  {
+    background-color: #007bff;
+}
+
+.sidebar-activity.active, .sidebar-activity.active:hover {
+    background-color: rgba(255, 255, 255, .9);
+}
+
+.sidebar-activity.active span, .sidebar-activity.active:hover span, .sidebar-activity.active:hover i, .sidebar-activity.active i {
+    color: #343a40;
+}
+
+.line:hover, .sidebar-item.selected{
+    background-color: #494e53;
+}
+
+.line:hover span, .sidebar-item.selected span, .sidebar-item.selected i {
+    color: white;
+}
+
+.sidebar-activity{
+    margin-left: 16px;
+}

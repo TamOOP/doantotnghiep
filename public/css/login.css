@@ -1,0 +1,60 @@
+.login-layout{
+    display: flex;
+    justify-content: center;
+    padding-top: 3rem;
+    padding-bottom: 2rem;
+    height: 100%;
+    width: auto;
+    padding-right: auto;
+    padding-left: auto;
+}
+
+.login-container{
+    background-color: white;
+    padding:  3rem  ;
+    width: 450px;
+    border-radius: 10px;
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,.15);
+}
+
+@media (max-width: 800px){
+    .login-container{
+        width: 600px;
+    }
+}
+
+.login-form{
+    display: flex;
+    flex-direction: column;
+}
+
+.login-input{
+    border: 1px solid rgb(189, 188, 188);
+    border-radius: 10px;
+    font-size: 1.17rem;
+}
+
+.login-button{
+    width: 200px;
+    background-color: #0f6cbf;
+    font-size: 1.17rem;
+}
+
+.forgot-password{
+    text-decoration: none;
+    color: #0f6cbf;
+}
+
+.login-divide{
+    width: 100%;
+    border-top: 1px solid rgb(204, 201, 201);
+}
+
+.register{
+    display: flex;
+    justify-content: center;
+}
+
+.register-button{
+    font-size: 1.17rem;
+}

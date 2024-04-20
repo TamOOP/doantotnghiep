@@ -1,0 +1,37 @@
+.payment-method-box {
+    border: 1px solid #d9d9d9;
+    border-radius: 10px;
+    min-width: 110px;
+    cursor: pointer;
+}
+
+.payment-method-item {
+    display: flex;
+    align-items: center;
+    padding: 20px 0 ;
+    border-bottom: 1px solid #d9d9d9;
+}
+
+.payment-method-item > input{
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.payment-method-content{
+    text-align: left;
+    margin-right: 20px;
+}
+.payment-method-image {
+    width: 2.5em;
+    height: 2.5em;
+    margin: 0 10px;
+}
+
+.payment-method-name{
+    font-size: 1em;
+    margin: 0;
+}
+
+.payment-method-sub-img{
+    max-width: 100%;
+}

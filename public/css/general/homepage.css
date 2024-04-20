@@ -1,0 +1,35 @@
+
+
+.course-item{
+    padding: 1rem 0.8rem;
+    border-radius: 7px;
+    border: 1px solid #bfc2c3;
+}
+.course-link{
+    color: #0f6cbf !important;
+}
+
+.course-link:hover{
+    text-decoration: underline;
+}
+
+.course-des{
+    display: flex;
+    flex-direction: row;
+}
+.course-image{
+    max-width: 100px;
+    max-height: 100px;
+}
+
+.course-teacher h6{
+    display: inline-block;
+}
+
+.teacher-link{
+    color: #0f6cbf !important;
+}
+
+.teacher-link:hover{
+    text-decoration: underline;
+}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Serialize Form Data Example</title>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+
+  .container {
+    text-align: center;
+  }
+
+  .timer {
+    font-size: 36px;
+    color: #333;
+    margin-top: 20px;
+  }
+</style>
+
+<body>
+
+  <div class="container">
+    <h1>Quiz Countdown Timer</h1>
+    <div id="timer" class="timer"></div>
+  </div>
+
+  <script>
+    $(document).ready(function () {
+      // Set the countdown time (in seconds)
+      var countdownTime = 60; // 1 minute
+
+      // Get the timer element
+      var timerElement = document.getElementById("timer");
+
+      // Function to update the timer
+      function updateTimer() {
+        var minutes = Math.floor(countdownTime / 60);
+        var seconds = countdownTime % 60;
+
+        // Format the time as MM:SS
+        var formattedTime = (minutes < 10 ? "0" : "") + minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+
+        // Update the timer element
+        timerElement.textContent = "Time left: " + formattedTime;
+
+        // Decrease the countdown time
+        countdownTime--;
+
+        // Check if time is up
+        if (countdownTime < 0) {
+          clearInterval(timerInterval);
+          timerElement.textContent = "Time's up!";
+          // Add your code to handle time up event here (e.g., submit quiz)
+        }
+      }
+
+      // Initial call to update timer
+      updateTimer();
+
+      // Update the timer every second
+      var timerInterval = setInterval(updateTimer, 1000);
+    });
+  </script>
+
+</body>
+
+</html>

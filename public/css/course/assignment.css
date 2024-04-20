@@ -1,0 +1,91 @@
+
+.icon-container{
+    background-color: #eb66a2;
+}
+
+.time-container{
+    background-color: #f8f9fa;
+    padding:  1rem 2rem;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+.time-row p{
+    display: inline;
+}
+
+.time-title{
+    font-weight: 700;
+}
+.description{
+    border-top: 1px solid gray;
+    margin-top: 10px;
+    padding: 10px 0;
+}
+
+.button-container{
+    display: flex;
+}
+.table tr{
+    border-left: 1px solid #dee2e6;
+    border-right: 1px solid #dee2e6;
+}
+.table thead tr{
+    border-left: none;
+    border-right: none;
+}
+
+.table .table-attribute{
+    font-weight: bold;
+    border-right: 1px solid #dee2e6;
+}
+
+.grade-status{
+    text-align: center;
+    padding: 5px;
+}
+
+.not-grade{
+    background-color: rgb(225, 223, 223);
+}
+
+.graded{
+    background-color: #cfefcf;
+}
+
+.table .submitted{
+    background-color: #caffca;
+}
+
+.file-container {
+    position: relative;
+}
+
+.modal-enrol-container {
+    background-color: white;
+}
+
+@media (min-width:800px) {
+    .modal-enrol-container {
+        max-width: 700px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width:500px) {
+    .modal-enrol-container {
+        min-width: 500px;
+    }
+}
+
+.modal-body {
+    border-bottom: 1px solid #dddfe0;
+    border-top: 1px solid #dddfe0;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+#close-modal{
+    cursor: pointer;
+}
+

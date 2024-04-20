@@ -1,0 +1,45 @@
+.announcement-content{
+    padding: 10px;
+    margin: 0 auto;
+}
+
+.btn-payment{
+    background-color: #0f6cbf !important;
+}
+.btn-payment:hover {
+    background-color: #0d5493 !important;
+}
+
+.priority-screen{
+    display: none;
+    position: absolute;
+    background-color: rgba(0, 0, 0, .5);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    overflow-y: auto;
+    z-index: 1050;
+    padding-top: 3rem;
+}
+.priority-content{
+    margin: 0 auto;
+    width: fit-content;
+    background-color: white;
+    border-radius: 5px;
+}
+#form-payment{
+    border-top: 1px solid #dddfe0;
+}
+
+#btn-cancel{
+    background-color: #ccc !important;
+    color: black !important;
+    border-color: #ccc !important;
+}
+#btn-cancel:hover{
+    opacity: 0.8;
+}
+
+
+

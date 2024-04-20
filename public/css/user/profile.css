@@ -1,0 +1,42 @@
+.avata-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100px;
+    border: 1px solid gray;
+    overflow: hidden;
+    width: 120px;
+    height: 120px;
+    margin-right: 0.5rem;
+}
+
+
+#user-name {
+    font-weight: bold;
+    margin: 16px;
+}
+
+.profile-container {
+    padding: 16px;
+    border: 1px solid #dfdfdf;
+    border-radius: 10px;
+    margin-top: 32px;
+}
+
+.lead {
+    font-size: calc(0.9271875rem + 0.32625vw);
+}
+
+.attr-container {
+    margin-top: 16px;
+    display: flex;
+}
+
+.profile-attr {
+    flex-basis: 33%;
+    font-weight: bold;
+}
+
+.profile-value {
+    flex-basis: 66%;
+}

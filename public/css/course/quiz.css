@@ -1,0 +1,123 @@
+.icon-container {
+    background-color: #eb66a2;
+}
+
+.time-container {
+    background-color: #f8f9fa;
+    padding: 1rem 2rem;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.time-row p {
+    display: inline;
+}
+
+.time-title {
+    font-weight: 700;
+}
+
+.description {
+    border-top: 1px solid gray;
+    margin-top: 10px;
+    padding: 10px 0;
+}
+
+.alert-warning {
+    color: #7d5a29 !important;
+    background-color: #fcefdc !important;
+    border-color: #fbe8cd !important;
+}
+
+.table-container {
+    background-color: #fafafa;
+    padding: 2rem;
+}
+
+.table-question {
+    background-color: white;
+    width: 100%;
+    margin-bottom: 0 !important;
+}
+.table-question a:hover, .table-question a:hover i{
+    text-decoration: none;
+}
+
+.table-question tr {
+    border-left: 1px solid #dee2e6;
+    border-right: 1px solid #dee2e6;
+}
+
+thead tr {
+    border-top: 1px solid #dee2e6;
+}
+
+.delete-icon,
+.info-icon,
+.setting-icon {
+    color: #0f6cbf;
+    cursor: pointer;
+}
+
+.question-summary {
+    border: 1px solid #dee2e6;
+    border-top: none;
+    padding: 1rem;
+    background-color: white;
+}
+
+a:hover i {
+    text-decoration: underline;
+}
+
+.success-icon {
+    color: rgb(45, 234, 45);
+}
+
+.fail-icon {
+    color: red;
+}
+
+.modal-container {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    max-width: 1000px;
+    margin: 30px auto;
+    border-radius: 5px;
+}
+
+.modal-body {
+    overflow: auto;
+}
+
+.modal-container table {
+    min-width: 500px;
+}
+
+@media (min-width: 992px) {
+    .chart-container {
+        position: relative;
+        margin: auto;
+        height: 48vh;
+        width: 46vw;
+    }
+}
+
+.chart-container{
+    min-width: 350px;
+    max-height: 422px;
+    color: purple;
+}
+
+.answer-block{
+    background-color: #eeeeee;
+    padding: 10px 20px 10px 0;
+    border: 1px solid #bbb;
+}
+
+.warning-icon{
+    position: absolute;
+    top: 30%;
+    right: -30px;
+}

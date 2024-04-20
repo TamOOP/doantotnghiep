@@ -1,0 +1,17 @@
+.collapse{
+    display: flex !important;
+    align-items: center;
+}
+.collapse:hover{
+    cursor: pointer;
+}
+.collapse-icon{
+    font-size: 18px;
+}
+.collapse-icon.rotated {
+    transform: rotate(-90deg);
+}
+.collapse-content{
+    display: flex;
+    flex-direction: column;
+}

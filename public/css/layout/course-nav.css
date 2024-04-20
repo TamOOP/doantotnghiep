@@ -1,0 +1,26 @@
+.course-menu {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.course-menu-item {
+    padding: 10px;
+    border-top: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+}
+
+.course-menu-item.active {
+    border-bottom-color: #0f6cbf;
+}
+
+.course-menu-item.active{
+    color: black !important;
+}
+
+.course-menu-item:hover {
+    background-color: #f8f8f8;
+    cursor: pointer;
+}
+.course-menu a:hover{
+    text-decoration: none !important;
+}

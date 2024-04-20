@@ -1,0 +1,83 @@
+.breadcrumbs {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+}
+
+.breadcrumbs li {
+    display: inline;
+}
+
+.breadcrumbs li:not(:last-child):after {
+    content: ">";
+    margin: 0 5px;
+}
+
+.breadcrumbs li a {
+    text-decoration: none;
+    color: #0f6cbf;
+}
+
+.breadcrumbs li a:hover {
+    text-decoration: underline;
+}
+
+.activity-title{
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.course-nav{
+    margin: 0 auto;
+}
+
+.icon-container {
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.icon-container img {
+    filter: brightness(0) invert(1);
+    height: 40px;
+}
+
+.activity-name {
+    font-weight: 700;
+    font-size: 30px;
+}
+
+.activity-menu {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.activity-menu li {
+    padding: 10px;
+    border-top: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+}
+
+.activity-menu li.active {
+    border-bottom-color: #0f6cbf;
+    color: black !important;
+}
+
+.activity-menu li:hover {
+    background-color: #f8f8f8;
+    cursor: pointer;
+}
+
+.activity-menu a:hover {
+    text-decoration: none !important;
+}
+
+.activity-container {
+    border-top: 1px solid #dddfe0
+}
+
+@media (min-width:830px) {
+    .breadcrumbs, .activity-title, .course-nav {
+        max-width: 830px;
+    }
+}
