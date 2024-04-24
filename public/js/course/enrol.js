@@ -30,11 +30,12 @@ $(document).ready(function () {
 
         $.ajax({
             type: "POST",
-            url: "/course/enrol",
+            url: "/course/enrol?id="+course_id,
             data: {course_id: course_id},
             dataType: "json",
             success: function (response) {
                 if (response.status == 'success'){
+                    toast_success('Đăng ký thành công vào khóa học');
                     window.location.replace('/course/view?id=' + course_id);
                 }
                 else{
@@ -47,3 +48,11 @@ $(document).ready(function () {
         });
     });
 });
+
+function toast_success(message) {
+    toastr.success(message, 'Success', {
+        closeButton: true,
+        positionClass: 'toast-top-right',
+        timeOut: 1000
+    });
+}

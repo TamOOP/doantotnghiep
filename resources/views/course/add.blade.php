@@ -5,6 +5,9 @@
 @push('style')
     <link rel="stylesheet" href="{{ asset('css/course/edit.css') }}">
     <link rel="stylesheet" href="{{ asset('css/layout/file-upload.css') }}">
+    @if (request('type') == 'course')
+        <link rel="stylesheet" href="{{ asset('css/course/member.css') }}">
+    @endif
     <style>
         .search-result-user:hover span {
             color: white !important;
@@ -527,7 +530,7 @@
                                 <p class="input-label">Giá khóa học</p>
                                 <div class="course-input w-100 d-flex align-items-center" style="max-width: none">
                                     <input class="course-input form-control" type="text" name="course-fee"
-                                        id="course-fee" value="1" min="1"  style="max-width: 30% !important">
+                                        id="course-fee" value="1" min="1" style="max-width: 30% !important">
                                     <p class="ml-3">VND</p>
                                 </div>
                             </div>

@@ -76,10 +76,15 @@
                                 {{ $user->role == 'student' ? 'Học sinh' : 'Giáo viên' }}
                             </td>
                             <td>
-                                <i class="fa fa-cog delete-icon" aria-hidden="true" style="margin-right: 5px" title="Sửa"></i>
-                                <i class="fa {{ $user->status == '1' ? 'fa-eye' : 'fa-eye-slash' }} delete-icon" style="margin-right: 5px"
-                                    title="{{ $user->status == '1' ? 'Đình chỉ người dùng' : 'Kích hoạt người dùng' }}" aria-hidden="true"
-                                    onclick="{{ $user->status == '1' ? 'suspendUser(this, '.$user->id.')' : 'activeUser(this, '.$user->id.')' }}"></i>
+                                <a href="/user/edit?type=profile&id={{ $user->id }}">
+                                    <i class="fa fa-cog delete-icon" aria-hidden="true" style="margin-right: 5px"
+                                        title="Sửa"></i>
+                                </a>
+                                <i class="fa {{ $user->status == '1' ? 'fa-eye' : 'fa-eye-slash' }} delete-icon"
+                                    style="margin-right: 5px"
+                                    title="{{ $user->status == '1' ? 'Đình chỉ người dùng' : 'Kích hoạt người dùng' }}"
+                                    aria-hidden="true"
+                                    onclick="{{ $user->status == '1' ? 'suspendUser(this, ' . $user->id . ')' : 'activeUser(this, ' . $user->id . ')' }}"></i>
 
                                 <i class="fa fa-trash delete-icon" aria-hidden="true" title="xóa"
                                     onclick="deleteUser(this, {{ $user->id }})" style="margin-right: 5px"></i>

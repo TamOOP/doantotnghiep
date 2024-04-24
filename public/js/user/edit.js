@@ -40,10 +40,11 @@ $(document).ready(function () {
 
 function sendUpdateProfileRequest() {
     var formData = new FormData($('#form-user')[0]);
+    var url = "update" + (query.get('id') !== null ? "?id=" + query.get('id') : '');
 
     $.ajax({
         type: "post",
-        url: "update",
+        url: url,
         data: formData,
         dataType: "json",
         contentType: false,

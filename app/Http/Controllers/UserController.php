@@ -258,9 +258,11 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit(Request $request)
     {
-        $user = auth()->user();
+        $user = $request->has('id')
+            ? User::find($request->id)->where('status', '1')->first()
+            : auth()->user();
 
         $imageSize = getimagesize(public_path($user->avata));
         $height = $imageSize[1];
@@ -282,7 +284,9 @@ class UserController extends Controller
      */
     public function update(UpdateUserRequest $request)
     {
-        $user = User::find(auth()->user()->id);
+        $user = $request->has('id')
+            ? User::find($request->id)
+            : User::find(auth()->user()->id);
 
         $user->name = $request->name;
         $user->description = $request->description;

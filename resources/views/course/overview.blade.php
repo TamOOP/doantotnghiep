@@ -9,7 +9,7 @@
 @section('content')
     <div class="main-inner">
         <div class="d-flex">
-            <h4>Tổng quan khóa học</h4>
+            <h4>Danh sách khóa học</h4>
             @if (auth()->user()->role == 'teacher')
                 <a href="/course/add?type=course" class="most-right">
                     <button class="btn btn-blue">Thêm khóa học</button>
