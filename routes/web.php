@@ -196,7 +196,9 @@ Route::middleware(['auth:web'])->group(function () {
                 Route::get('/', [ExaminationController::class, 'show']);
 
                 Route::prefix('attempt')->group(function () {
-                    Route::get('/', [AttemptController::class, 'store'])->middleware(AttemptCloseValidate::class, AttemptAllowValidate::class);
+                    Route::post('/', [AttemptController::class, 'store'])->middleware(AttemptCloseValidate::class, AttemptAllowValidate::class);
+
+                    Route::get('/', [AttemptController::class, 'show'])->middleware(AttemptCloseValidate::class, AttemptAllowValidate::class);
 
                     Route::middleware(AttemptAvailableValidate::class)->group(function () {
                         Route::post('/saveAnswer', [AttemptController::class, 'saveAnswer']);

@@ -78,6 +78,30 @@ a:hover i {
     color: red;
 }
 
+.modal-body {
+    border-bottom: 1px solid #dddfe0;
+    border-top: 1px solid #dddfe0;
+    display: flex;
+    flex-direction: column;
+}
+.modal-enrol-container {
+    background-color: white;
+}
+
+@media (min-width:800px) {
+    .modal-enrol-container {
+        max-width: 700px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width:500px) {
+    .modal-enrol-container {
+        min-width: 500px;
+        margin: 0 auto;
+
+    }
+}
 .modal-container {
     display: flex;
     flex-direction: column;

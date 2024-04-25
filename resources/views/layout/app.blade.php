@@ -41,6 +41,7 @@
 
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/layout/header.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
 
     @if (session('error'))
         <script>

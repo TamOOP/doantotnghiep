@@ -51,6 +51,7 @@ class AttemptController extends Controller
     {
         $userId = auth()->user()->id;
         $examId = $request->query('id');
+        $passwordAttempt = $request->password;
 
         $exam = (new Examination())->getExam($examId);
 
@@ -60,15 +61,18 @@ class AttemptController extends Controller
             ]);
         }
 
-        $attempt = new Attempt();
-        $attempt->user_id = $userId;
-        $attempt->exam_id = $examId;
-        $attempt->time_start = AppHelper::getCurrentTime();
-        $attempt->time_end = !is_null($exam->time_limit) ? Carbon::parse($attempt->time_start)->addSeconds($exam->time_limit * $exam->time_unit)->format('Y-m-d H:i:s') : null;
-
         $attemptNotFinished = (new Attempt())->getAttemptNotFinished($examId, $userId);
 
         if (is_null($attemptNotFinished)) {
+            if (!is_null($exam->password) && $exam->password !== $passwordAttempt) {
+                return response()->json(['error' => 'Mật khẩu làm bài không đúng']);
+            }
+
+            $attempt = new Attempt();
+            $attempt->user_id = $userId;
+            $attempt->exam_id = $examId;
+            $attempt->time_start = AppHelper::getCurrentTime();
+            $attempt->time_end = !is_null($exam->time_limit) ? Carbon::parse($attempt->time_start)->addSeconds($exam->time_limit * $exam->time_unit)->format('Y-m-d H:i:s') : null;
             try {
                 $attempt->save();
             } catch (\Throwable $th) {
@@ -98,11 +102,7 @@ class AttemptController extends Controller
         $questions = $attempt->questions()->orderBy('index')->get();
         $questions = $this->indexChoiceAndCheckAnswerQuestion($questions);
 
-
-        return view('course.activity.quiz-attempt', [
-            'attempt' => $attempt,
-            'questions' => $questions
-        ]);
+        return response()->json(['redirect' => '/course/quiz/attempt?id=' . $examId . '&attemptId=' . $attempt->id]);
     }
 
     public function saveAnswer(Request $request)
@@ -257,9 +257,16 @@ class AttemptController extends Controller
      * @param  \App\Models\Attempt  $attempt
      * @return \Illuminate\Http\Response
      */
-    public function show(Attempt $attempt)
+    public function show(Request $request)
     {
-        //
+        $attempt = Attempt::find($request->attemptId);
+        $questions = $attempt->questions()->orderBy('index')->get();
+        $questions = $this->indexChoiceAndCheckAnswerQuestion($questions);
+
+        return view('course.activity.quiz-attempt', [
+            'attempt' => $attempt,
+            'questions' => $questions
+        ]);
     }
 
     /**

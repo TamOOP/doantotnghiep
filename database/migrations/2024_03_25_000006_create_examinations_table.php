@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('examinations', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('activity_id');
+            $table->string('password');
             $table->dateTime('time_start');
             $table->dateTime('time_end')->nullable();
             $table->integer('time_limit')->nullable();

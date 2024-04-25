@@ -24,8 +24,8 @@ class StoreAttemptRequest extends FormRequest
     public function rules()
     {
         return [
-            'userId' => 'required',
-            'examId' => 'required',
+            'id' => 'required',
+            'password' => 'required'
         ];
     }
 }

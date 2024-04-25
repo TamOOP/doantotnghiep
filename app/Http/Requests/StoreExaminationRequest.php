@@ -26,9 +26,11 @@ class StoreExaminationRequest extends FormRequest
         return [
             'name' => 'required|string',
             'description' => 'nullable|string',
+            'cb-password' => 'nullable|in:on',
             'cb-start' => 'nullable|in:on',
             'cb-end' => 'nullable|in:on',
             'cb-limit' => 'nullable|in:on',
+            'password' => 'nullable|string',
             'date-start' => 'date',
             'date-end' => 'date',
             'start-hour' => 'integer | between:0,23',

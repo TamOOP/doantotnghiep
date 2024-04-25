@@ -99,17 +99,17 @@
                                     <div class="course-input position-relative">
                                         <select class="course-input form-select" name="enrolment-method"
                                             id="enrolment-method">
-                                            <option value="0">Đăng ký thủ công</option>
-                                            <option value="1">Tự tham gia</option>
-                                            <option value="2">Thanh toán để tham gia</option>
+                                            <option value="0" {{ $course->enrolment_method == '0' ? 'selected' : '' }}>Đăng ký thủ công</option>
+                                            <option value="1" {{ $course->enrolment_method == '1' ? 'selected' : '' }}>Tự tham gia</option>
+                                            <option value="2" {{ $course->enrolment_method == '2' ? 'selected' : '' }}>Thanh toán để tham gia</option>
                                         </select>
                                     </div>
                                 </div>
-                                <div class="group-input mt-4" id="fee-container" style="display: none">
+                                <div class="group-input mt-4" id="fee-container" style="{{ $course->enrolment_method == '2' ? '' : 'display: none' }}">
                                     <p class="input-label">Giá khóa học</p>
                                     <div class="course-input w-100" style="max-width: none">
                                         <input class="course-input form-control" type="text" name="course-fee"
-                                            id="course-fee" style="max-width: 30% !important">
+                                            id="course-fee" style="max-width: 30% !important" value="{{ number_format($course->payment_cost) }}">
                                     </div>
                                 </div>
                             </div>

@@ -2,6 +2,7 @@
 
 @push('style')
     <link rel="stylesheet" href="{{ asset('css/course/quiz.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/course/edit.css') }}">
 @endpush
 
 @section('activity-icon')
@@ -63,11 +64,18 @@
         @else
             @if ($exam->attempt_allow == 0 || count($attempts) < $exam->attempt_allow)
                 <div style="text-align: center">
-                    <a href="/course/quiz/attempt?id={{ $exam->id }}">
-                        <button class="btn btn-blue mt-3" align="center">
-                            {{ $exam->hasAttemptNotFinish ? 'Tiếp tục bài làm' : 'Làm bài' }}
+                    @if (!is_null($exam->attemptNotFinish))
+                        <a href="/course/quiz/attempt?id={{ $exam->id }}&attemptId={{ $exam->attemptNotFinish->id }}">
+                            <button class="btn btn-blue mt-3" align="center">
+                                Tiếp tục làm bài
+                            </button>
+                        </a>
+                    @else
+                        <button class="btn btn-blue mt-3" align="center"
+                            {{ !is_null($exam->password) ? 'onclick=enterPassword(this)' : 'onclick=sendCreateAttemptRequest()' }}>
+                            Làm bài
                         </button>
-                    </a>
+                    @endif
                 </div>
             @endif
         @endif
@@ -120,5 +128,30 @@
     @endif
 @endsection
 
+@section('modal')
+    <div class="modal-enrol-container mt-4">
+        <div class="d-flex align-items-center p-4">
+            <h5 class="font-weight-bold">Nhập mật khẩu làm bài</h5>
+            <i id="close-modal" class="fa fa-times mr-0 ml-auto" aria-hidden="true"></i>
+        </div>
+        <div class="modal-body p-4">
+            <div class="group-input">
+                <p class="input-label" class="p-2">Mật khẩu làm bài</p>
+                <input type="password" class="form-control course-input" name="password" id="password" autocomplete="off">
+                <i class="fa fa-eye-slash ml-3 password-icon" style="cursor: pointer" aria-hidden="true"></i>
+            </div>
+            <div class="alert alert-danger ml-3 mr-3 mt-3"
+                style="display:none;margin-left: 0 !important; margin-right:0 !important; margin-bottom: 0 !important">
+
+            </div>
+        </div>
+        <div class="modal-footer p-4">
+            <button id="btn-modal-close" class="btn btn-secondary btn-gray mr-2">Hủy bỏ</button>
+            <button id="btn-confirm-password" class="btn btn-primary btn-blue">Xác nhận</button>
+        </div>
+    </div>
+@endsection
+
 @push('script')
+    <script src="{{ asset('js/course/quiz-overview.js') }}"></script>
 @endpush

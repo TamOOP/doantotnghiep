@@ -82,12 +82,12 @@ function sendFileUpdateRequest() {
                 window.location.href = "/course/file?id=" + id;
             } else {
                 console.log(response.error);
-                // location.reload();
+                location.reload();
             }
         },
         error: function (xhr, status, error) {
             console.error(xhr.responseText);
-            // location.reload();
+            location.reload();
         }
     });
 }

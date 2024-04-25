@@ -156,6 +156,16 @@
                                 <textarea class="form-control course-input" name="description" id="description" cols="80" rows="10"></textarea>
                             </div>
                         </div>
+                        <div class="group-input">
+                            <p class="input-label" class="p-2">Mật khẩu làm bài</p>
+
+                            <input class="enable-checkbox" name="cb-password" type="checkbox"
+                                {{ !is_null($exam->password) ? 'checked' : '' }}>
+                            <p class="mr-3 p-2">Bật</p>
+                            <input type="password" class="form-control course-input" name="password" id="password" disabled>
+                            <i class="fa fa-eye-slash ml-3 password-icon" style="cursor: pointer"
+                                aria-hidden="true"></i>
+                        </div>
                     </li>
                     <li class="collapse-item">
                         <div class="collapse d-flex">

@@ -188,6 +188,16 @@
                                 <p class="input-label" class="p-2">Mô tả</p>
                                 <textarea class="form-control course-input" name="description" id="description" cols="80" rows="10">{{ $exam->activity->description }}</textarea>
                             </div>
+                            <div class="group-input">
+                                <p class="input-label" class="p-2">Mật khẩu làm bài</p>
+                                <input class="enable-checkbox" name="cb-password" type="checkbox"
+                                    {{ !is_null($exam->password) ? 'checked' : '' }}>
+                                <p class="mr-3 p-2">Bật</p>
+                                <input type="password" class="form-control course-input" name="password" id="password"
+                                    {{ !is_null($exam->password) ? 'value=' . $exam->password : 'disabled' }}>
+                                <i class="fa fa-eye-slash ml-3 password-icon" style="cursor: pointer"
+                                    aria-hidden="true"></i>
+                            </div>
                         </div>
                     </li>
                     <li class="collapse-item">
@@ -500,8 +510,7 @@
                             </div>
                             <div class="group-input">
                                 <p class="input-label" class="p-2">Mô tả</p>
-                                <textarea class="form-control course-input" name="description" id="description" cols="80" rows="10"
-                                    >{{ $file->activity->description }}</textarea>
+                                <textarea class="form-control course-input" name="description" id="description" cols="80" rows="10">{{ $file->activity->description }}</textarea>
                             </div>
                             <div class="group-input">
                                 <div class="d-flex" style="flex-basis: 25%">
@@ -515,12 +524,11 @@
                                     'imageOnly' => false,
                                     'fileName' => 'file',
                                     'filePath' => $file->file_path,
-                                    'require' => true
+                                    'require' => true,
                                 ])
                             </div>
                         </div>
                     </li>
-
                     @include('layout.error')
                 </ul>
                 <div class="action-block mt-3 justify-content-center d-flex">

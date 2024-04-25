@@ -59,6 +59,7 @@ class ExaminationController extends Controller
 
         $exam = new Examination();
         $exam->activity_id = $activityId;
+        $exam->password = $request->has('cb-password') ? $request->password : null;
         $exam->time_start = $request->has('cb-start') ? $request->input('date-start') . ' ' . $request->input('start-hour') . ':' . $request->input('start-minute') . ':' . '00' : null;
         $exam->time_end = $request->has('cb-end') ? $request->input('date-end') . ' ' . $request->input('end-hour') . ':' . $request->input('end-minute') . ':' . '00' : null;
         $exam->time_limit = ($request->has('cb-limit') && $request->has('time-limit') && $request->has('time-unit')) ? $request->input('time-limit') : 0;
@@ -137,7 +138,7 @@ class ExaminationController extends Controller
             ->where('exam_id', $examId)
             ->get();
 
-        $exam->hasAttemptNotFinish = (new Attempt())->getAttemptNotFinished($examId, $userId) != null;
+        $exam->attemptNotFinish = (new Attempt())->getAttemptNotFinished($examId, $userId);
 
         foreach ($attempts as $attempt) {
             $attemptFormat = (new AttemptController)->formatAttemptAttr($attempt->id);
@@ -327,6 +328,7 @@ class ExaminationController extends Controller
         $exam = (new Examination())->getExam($id);
 
         if (!is_null($exam)) {
+            $exam->password = $request->has('cb-password') ? $request->password : null;
             $exam->time_start = $request->has('cb-start') ? $request->input('date-start') . ' ' . $request->input('start-hour') . ':' . $request->input('start-minute') . ':' . '00' : null;
             $exam->time_end = $request->has('cb-end') ? $request->input('date-end') . ' ' . $request->input('end-hour') . ':' . $request->input('end-minute') . ':' . '00' : null;
             $exam->time_limit = ($request->has('cb-limit') && $request->has('time-limit') && $request->has('time-unit')) ? $request->input('time-limit') : 0;
