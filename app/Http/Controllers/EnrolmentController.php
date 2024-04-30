@@ -38,6 +38,14 @@ class EnrolmentController extends Controller
      */
     public function store($courseId, $userId, $enrolMethod)
     {
+        $enrolment = Enrolment::where('user_id', $userId)
+            ->where('course_id', $courseId)
+            ->first();
+            
+        if (!is_null($enrolment)) {
+            return $enrolment->id;
+        }
+
         $newEnrol = new Enrolment();
 
         try {

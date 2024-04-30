@@ -108,7 +108,7 @@
                                 <div class="group-input mt-4" id="fee-container" style="{{ $course->enrolment_method == '2' ? '' : 'display: none' }}">
                                     <p class="input-label">Giá khóa học</p>
                                     <div class="course-input w-100" style="max-width: none">
-                                        <input class="course-input form-control" type="text" name="course-fee"
+                                        <input class="course-input form-control number-format" type="text" name="course-fee"
                                             id="course-fee" style="max-width: 30% !important" value="{{ number_format($course->payment_cost) }}">
                                     </div>
                                 </div>

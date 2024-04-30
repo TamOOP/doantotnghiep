@@ -29,8 +29,6 @@
     @yield('sidebar')
 
     <div class="main-content {{ session('sidebar') == true ? 'drawer-left-sidebar' : '' }}">
-        @include('layout.error')
-
         @yield('content')
     </div>
 

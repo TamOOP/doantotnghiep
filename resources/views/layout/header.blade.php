@@ -201,7 +201,8 @@
                     <div class="user-nav">
                         <div id="avata">
                             <div class="user-circle">
-                                <img src="{{ asset($user->avata) }}" width="{{ $width }}" height="{{ $height }}">
+                                <img src="{{ asset($user->avata) }}" width="{{ $width }}"
+                                    height="{{ $height }}">
                             </div>
                             <i class="fas fa-angle-down"></i>
                         </div>
@@ -209,10 +210,21 @@
                         <div class="user-dropdown">
                             <div class="user-menu">
                                 <a class="menu-item" href="/user/profile">Thông tin cá nhân</a>
-                                <a class="menu-item" href="/">Tin nhắn</a>
-                                <a class="menu-item" href="/">Thông báo</a>
                                 <a class="menu-item" href="/user/edit?type=password">Thay đổi mật khẩu</a>
-                                <a class="menu-item" href="/logout" style="border-top:1px solid rgb(222, 220, 220)">
+
+                                <div class="divide-nav"></div>
+                                <a class="menu-item" href="#">Tin nhắn</a>
+                                <a class="menu-item" href="#">Thông báo</a>
+
+                                @if (auth()->user()->role == 'teacher')
+                                    <div class="divide-nav"></div>
+                                    <p class="menu-text">Số dư: {{ number_format(auth()->user()->cash) }} VNĐ</p>
+                                    <a class="menu-item" href="/user/withdraw">Rút tiền</a>
+                                    <a class="menu-item" href="/user/bank">Tài khoản ngân hàng</a>
+                                @endif
+
+                                <div class="divide-nav"></div>
+                                <a class="menu-item" href="/logout">
                                     Đăng xuất
                                 </a>
                             </div>

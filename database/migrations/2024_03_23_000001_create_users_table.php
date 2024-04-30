@@ -20,10 +20,10 @@ return new class extends Migration
             $table->string('name');
             $table->string('avata');
             $table->longText('description')->nullable();
+            $table->integer('cash')->default(0);
             $table->enum('role', ['student', 'teacher', 'admin']);
             $table->string('phone')->nullable();
             $table->enum('status', [1, 0, -1])->default(1);
-
         });
     }
 

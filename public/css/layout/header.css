@@ -10,6 +10,10 @@
     flex-flow: row nowrap;
 }
 
+.divide-nav{
+    border-top:1px solid rgb(222, 220, 220)
+}
+
 .navbar-brand {
     display: flex;
     align-items: center;
@@ -345,7 +349,7 @@
     display: flex;
 }
 
-.menu-item {
+.menu-item, .menu-text {
     padding: 7px 10px;
     width: 100%;
     text-decoration: none !important;

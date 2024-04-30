@@ -4,6 +4,7 @@ use App\Helpers\AppHelper;
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\AssignmentController;
 use App\Http\Controllers\AttemptController;
+use App\Http\Controllers\BankController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ExaminationController;
 use App\Http\Controllers\FileController;
@@ -13,6 +14,7 @@ use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\QuestionOrderController;
 use App\Http\Controllers\SubmissionController;
 use App\Http\Controllers\TopicController;
+use App\Http\Controllers\TransferController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\AttemptAllowValidate;
 use App\Http\Middleware\AttemptAvailableValidate;
@@ -24,6 +26,7 @@ use App\Http\Middleware\DontHaveAttemptValidate;
 use App\Http\Middleware\GradeAttemptFinished;
 use App\Http\Middleware\SubmissionGradedValidate;
 use App\Http\Middleware\TeacherAdminValidate;
+use App\Http\Middleware\TeacherValidate;
 use App\Models\Examination;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -224,6 +227,22 @@ Route::middleware(['auth:web'])->group(function () {
         Route::post('/update', [UserController::class, 'update']);
 
         Route::post('/updatePassword', [UserController::class, 'updatePassword']);
+
+        Route::get('/withdraw', [TransferController::class, 'show']);
+
+        Route::prefix('transfer')->middleware([TeacherValidate::class])->group(function () {
+            Route::post('/store', [TransferController::class, 'store']);
+
+            Route::post('/delete', [TransferController::class, 'destroy']);
+        });
+
+        Route::prefix('bank')->middleware([TeacherValidate::class])->group(function () {
+            Route::get('/', [BankController::class, 'show']);
+
+            Route::post('/store', [BankController::class, 'store']);
+
+            Route::post('/delete', [BankController::class, 'destroy']);
+        });
     });
 
     Route::prefix('admin')->middleware(['admin'])->group(function () {
@@ -257,6 +276,10 @@ Route::middleware(['auth:web'])->group(function () {
             Route::get('/role', [UserController::class, 'role']);
 
             Route::post('/changeRole', [UserController::class, 'changeRole']);
+        
+            Route::get('/transfer', [TransferController::class, 'index']);
+        
+            Route::post('/transfer/update', [TransferController::class, 'update']);
         });
     });
 

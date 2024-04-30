@@ -30,7 +30,6 @@ class PaymentController extends Controller
     {
     }
 
-
     public function payCourse(Request $request)
     {
         $request->validate([
@@ -39,19 +38,16 @@ class PaymentController extends Controller
         ]);
 
         $course = Course::find($request->id);
-        $enrolmentId = (new EnrolmentController)->store($course->id, auth()->user()->id, '2');
 
-        if ($enrolmentId instanceof Throwable) {
-            return response()->json(['error' => $enrolmentId->getMessage()]);
-        }
         $orderId = PaymentHelper::generateOrderId();
 
         $payment = new Payment();
         $payment->orderId = $orderId;
-        $payment->enrolment_id = $enrolmentId;
+        $payment->user_id = auth()->user()->id;
+        $payment->course_id = $course->id;
         $payment->value = $course->payment_cost;
         $payment->payment_date = AppHelper::getCurrentTime();
-        $payment->payment_status = 'done';
+        $payment->payment_status = 'process';
 
         try {
             $payment->save();
@@ -65,14 +61,58 @@ class PaymentController extends Controller
     public function receiveVnPayResponse(Request $request)
     {
         $payment = Payment::where('orderId', $request->vnp_TxnRef)->first();
-        $course = $payment->enrolment->course;
 
-        session()->flash('success', 'Đã thanh toán thành công và được đăng ký vào khóa học');
+        if ($request->vnp_ResponseCode == '00' || $request->vnp_TransactionStatus == '00') {
+            $payment = $this->updateSuccessPaymentThenEnrolStudent($request->vnp_TxnRef);
 
-        return redirect('/course/view?id='.$course->id);
+            if ($payment instanceof Throwable) {
+                return response()->json(['error' => $payment->getMessage()]);
+            }
+
+            session()->flash('success', 'Đã thanh toán thành công và được đăng ký vào khóa học');
+
+            return redirect('/course/view?id=' . $payment->course_id);
+        } else {
+            return redirect('/course/enrol?id=' . $payment->course_id);
+        }
     }
+
     public function receiveMomoResponse(IpnMomoRequest $request)
     {
-        return redirect('/course/view');
+        $payment = Payment::where('orderId', $request->orderId)->first();
+
+        if ($request->resultCode == '0') {
+            $payment = $this->updateSuccessPaymentThenEnrolStudent($request->orderId);
+
+            if ($payment instanceof Throwable) {
+                return response()->json(['error' => $payment->getMessage()]);
+            }
+
+            session()->flash('success', 'Đã thanh toán thành công và được đăng ký vào khóa học');
+
+            return redirect('/course/view?id=' . $payment->course_id);
+        } else {
+            return redirect('/course/enrol?id=' . $payment->course_id);
+        }
+    }
+
+    protected function updateSuccessPaymentThenEnrolStudent($orderId)
+    {
+        $payment = Payment::where('orderId', $orderId)->first();
+        $payment->payment_status = 'done';
+
+        try {
+            $payment->save();
+        } catch (\Throwable $th) {
+            return $th;
+        }
+
+        $enrolmentId = (new EnrolmentController)->store($payment->course_id, $payment->user_id, '2');
+
+        if ($enrolmentId instanceof Throwable) {
+            return $enrolmentId;
+        }
+
+        return $payment;
     }
 }

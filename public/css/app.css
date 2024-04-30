@@ -250,3 +250,15 @@ button {
 .assignment {
     background-color: #eb66a2;
 }
+
+.fail-text {
+    color: red !important;
+}
+
+.success-text {
+    color: rgb(45, 234, 45) !important;
+}
+
+.waiting-text {
+    color: #cccc39 !important;
+}

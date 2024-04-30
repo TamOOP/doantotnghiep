@@ -38,6 +38,14 @@ class User extends Model implements Authenticatable
             ->withPivot('marked');
     }
 
+    public function banks() : HasMany {
+        return $this->hasMany(Bank::class);
+    }
+
+    public function transfers() : HasMany {
+        return $this->hasMany(Transfer::class);
+    }
+
     public function getAuthIdentifierName()
     {
         return $this->primaryKey;

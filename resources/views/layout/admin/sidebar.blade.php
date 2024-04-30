@@ -38,6 +38,12 @@
                                     <span>Chỉ định vai trò người dùng</span>
                                 </li>
                             </a>
+                            <a href="/admin/user/transfer">
+                                <li class="sidebar-activity line text-ellipsis {{ request()->path() == 'admin/user/role' ? 'active' : '' }}">
+                                    <i class="fa fa-circle mr-3 icon-activity"></i>
+                                    <span>Yêu cầu rút tiền</span>
+                                </li>
+                            </a>
                         </ul>
                     </li>
                     <li>

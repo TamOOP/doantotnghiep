@@ -16,13 +16,14 @@ return new class extends Migration
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
             $table->longText('orderId');
-            $table->unsignedBigInteger('enrolment_id');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('course_id');
             $table->float('value', 8, 2);
             $table->dateTime('payment_date');
             $table->enum('payment_status', ['process','done']);
 
-            $table->foreign('enrolment_id')->references('id')->on('enrolments');
-
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('course_id')->references('id')->on('courses');
         });
     }
 

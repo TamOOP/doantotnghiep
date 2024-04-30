@@ -12,15 +12,6 @@ $(document).ready(function () {
         }
     });
 
-    $('#course-fee').keyup(function (e) { 
-        let inputValue = $(this).val();
-
-        inputValue = inputValue.replace(/\D/g, '');
-
-        let formattedValue = numberWithCommas(inputValue);
-        $(this).val(formattedValue);
-    });
-
     $('#form-data').submit(function (e) {
         e.preventDefault();
         const nameInput = $('#name');
@@ -72,6 +63,3 @@ $(document).ready(function () {
     });
 });
 
-function numberWithCommas(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}
